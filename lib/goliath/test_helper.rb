@@ -64,11 +64,9 @@ module Goliath
       elsif opts[:log_file]
         file = opts[:log_file]
         FileUtils.mkdir_p(File.dirname(file))
-
-       log.add(Log4r::FileOutputter.new('fileOutput', {:filename => file,
-                                                       :trunc => false,
-                                                       :formatter => log_format}))
+        log.add(Log4r::FileOutputter.new('fileOutput', {:filename => file, :trunc => false, :formatter => log_format}))
       end
+
       log
     end
 
@@ -146,7 +144,6 @@ module Goliath
       req = create_test_request(request_data).put(request_data)
       hookup_request_callbacks(req, errback, &blk)
     end
-
     # Make a PATCH request against the currently launched API.
     #
     # @param request_data [Hash] Any data to pass to the PUT request.
@@ -156,7 +153,6 @@ module Goliath
       req = create_test_request(request_data).patch(request_data)
       hookup_request_callbacks(req, errback, &blk)
     end
-
     # Make a DELETE request against the currently launched API.
     #
     # @param request_data [Hash] Any data to pass to the DELETE request.
