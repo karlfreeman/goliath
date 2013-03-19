@@ -137,7 +137,8 @@ module Goliath
     #  - we want it to run
     #  - there has been no exception raised
     #  - the file that has been run, is the goliath application file
-    if Goliath::Application.run_app_on_exit? && $!.nil? && $0 == Goliath::Application.app_file
+    #  - and we're not testing!
+    if Goliath::Application.run_app_on_exit? && $!.nil? && $0 == Goliath::Application.app_file && !Goliath.env?(:test)
       Application.run!
     end
   end
